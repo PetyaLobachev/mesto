@@ -18,6 +18,7 @@ popupCloseButton.addEventListener('click', popupToggle)
 
 
 
+
 const popupForm = popup.querySelector('.popup__form')
 const inputSubmitButton = popup.querySelector('.popup__submit-button')
 const nameAuthor = popupForm.querySelector('.popup__form-name-author')
