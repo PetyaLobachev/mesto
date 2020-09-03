@@ -1,22 +1,13 @@
 .popup__submit-button {
-<<<<<<< HEAD
   width: 100%;
-=======
-  width: 358px;
->>>>>>> c9b8445b94ab41a2309d1618e78d39d120b2051a
   height: 50px;
   font-size: 18px;
   line-height: 22px;
   font-weight: normal;
   text-align: center;
-<<<<<<< HEAD
   margin: 48px 0 0;
   border-radius: 2px;
   border: 0;
-=======
-  margin: 48px 36px auto;
-  border-radius: 2px;
->>>>>>> c9b8445b94ab41a2309d1618e78d39d120b2051a
   color: #ffffff;
   background-color: #000000;
   padding: 0;

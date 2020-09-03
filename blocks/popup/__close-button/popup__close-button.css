@@ -13,10 +13,7 @@
   justify-content: center;
   outline: none;
   transition: 0.5s linear 0s;
-<<<<<<< HEAD
   background: url("../../../images/close_popup-icon.svg") no-repeat center;
-=======
->>>>>>> c9b8445b94ab41a2309d1618e78d39d120b2051a
 }
 @media screen and (max-width: 402px) {
   .popup__close-button {
