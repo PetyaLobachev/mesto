@@ -1,8 +1,16 @@
 .popup__form {
+<<<<<<< HEAD
   width: 100%;
 }
 @media screen and (max-width: 512px) {
   .popup__form {
+=======
+  width: 430px;
+}
+@media screen and (max-width: 512px) {
+  .popup__form {
+    width: 320px;
+>>>>>>> c9b8445b94ab41a2309d1618e78d39d120b2051a
     margin: 0;
   }
 }

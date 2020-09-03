@@ -9,7 +9,10 @@
   border-radius: 2px;
   outline: none;
   transition: 0.5s linear 0s;
+<<<<<<< HEAD
   background: url("../../../images/add_button-icon.svg") no-repeat center;
+=======
+>>>>>>> c9b8445b94ab41a2309d1618e78d39d120b2051a
 }
 @media screen and (max-width: 920px) {
   .profile__add-button {
@@ -20,8 +23,11 @@
   .profile__add-button {
     width: 282px;
     margin: 36px 0 0;
+<<<<<<< HEAD
     background: url("../../../images/add_button-icon-mobile.svg") no-repeat
       center;
+=======
+>>>>>>> c9b8445b94ab41a2309d1618e78d39d120b2051a
   }
 }
 .profile__add-button:hover {

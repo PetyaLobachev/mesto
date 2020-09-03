@@ -4,6 +4,10 @@
 @import url("../vendor/fonts/font.css");
 /* body */
 @import url("../blocks/body/body.css");
+<<<<<<< HEAD
+=======
+@import url("../blocks/body/_if-popup-opened/body_if-popup-opened.css");
+>>>>>>> c9b8445b94ab41a2309d1618e78d39d120b2051a
 /* page */
 @import url("../blocks/page/page.css");
 /* header */
@@ -19,7 +23,13 @@
 @import url("../blocks/profile/__title/profile__title.css");
 @import url("../blocks/profile/__about-author/profile__about-author.css");
 @import url("../blocks/profile/__edit-button/profile__edit-button.css");
+<<<<<<< HEAD
 @import url("../blocks/profile/__add-button/profile__add-button.css");
+=======
+@import url("../blocks/profile/__edit-button-icon/profile__edit-button-icon.css");
+@import url("../blocks/profile/__add-button/profile__add-button.css");
+@import url("../blocks/profile/__add-button-icon/profile__add-button-icon.css");
+>>>>>>> c9b8445b94ab41a2309d1618e78d39d120b2051a
 /* grid-cards */
 @import url("../blocks/grid-cards/grid-cards.css");
 /* cards */
@@ -29,6 +39,10 @@
 @import url("../blocks/card/__image/card__image.css");
 @import url("../blocks/card/__title/card__title.css");
 @import url("../blocks/card/__like-button/card__like-button.css");
+<<<<<<< HEAD
+=======
+@import url("../blocks/card/__like-button-logo/card__like-button-logo.css");
+>>>>>>> c9b8445b94ab41a2309d1618e78d39d120b2051a
 /* footer */
 @import url("../blocks/footer/footer.css");
 @import url("../blocks/footer/__copyright/footer__copyright.css");
@@ -37,8 +51,17 @@
 @import url("../blocks/popup/_opened/popup_opened.css");
 @import url("../blocks/popup/__container/popup__container.css");
 @import url("../blocks/popup/__close-button/popup__close-button.css");
+<<<<<<< HEAD
 @import url("../blocks/popup/__title/popup__title.css");
 @import url("../blocks/popup/__form/popup__form.css");
 @import url("../blocks/popup/__form-input/popup__form-input.css");
 @import url("../blocks/popup/__form-author/popup__form-author.css");
+=======
+@import url("../blocks/popup/__close-icon/popup__close-icon.css");
+@import url("../blocks/popup/__title/popup__title.css");
+@import url("../blocks/popup/__form/popup__form.css");
+@import url("../blocks/popup/__form-input/popup__form-input.css");
+@import url("../blocks/popup/__form-name-author/popup__form-name-author.css");
+@import url("../blocks/popup/__form-about-author/popup__form-about-author.css");
+>>>>>>> c9b8445b94ab41a2309d1618e78d39d120b2051a
 @import url("../blocks/popup/__submit-button/popup__submit-button.css");

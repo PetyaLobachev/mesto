@@ -5,7 +5,10 @@
   column-gap: 18px;
   list-style-type: none;
   padding: 0;
+<<<<<<< HEAD
   margin: 0;
+=======
+>>>>>>> c9b8445b94ab41a2309d1618e78d39d120b2051a
 }
 @media screen and (max-width: 920px) {
   .cards {

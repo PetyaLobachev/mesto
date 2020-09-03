@@ -1,14 +1,26 @@
 .popup__title {
   display: block;
+<<<<<<< HEAD
   width: 100%;
   font-size: 24px;
   line-height: 29px;
   font-weight: 900;
   margin: 0 0 50px;
+=======
+  width: 330px;
+  font-size: 24px;
+  line-height: 29px;
+  font-weight: 900;
+  margin: 34px auto 50px 36px;
+>>>>>>> c9b8445b94ab41a2309d1618e78d39d120b2051a
   color: #000000;
 }
 @media screen and (max-width: 512px) {
   .popup__title {
+<<<<<<< HEAD
+=======
+    margin: 34px auto 50px 36px;
+>>>>>>> c9b8445b94ab41a2309d1618e78d39d120b2051a
     font-size: 18px;
     line-height: 22px;
   }

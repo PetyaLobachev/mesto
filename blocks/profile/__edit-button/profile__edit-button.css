@@ -3,19 +3,29 @@
   box-sizing: border-box;
   border: 0;
   padding: 0;
+<<<<<<< HEAD
   width: 24px;
   height: 24px;
   outline: none;
   transition: 0.5s linear 0s;
   background: url("../../../images/edit_button-icon.svg") no-repeat center;
+=======
+  max-width: 24px;
+  max-height: 24px;
+  outline: none;
+  transition: 0.5s linear 0s;
+>>>>>>> c9b8445b94ab41a2309d1618e78d39d120b2051a
 }
 @media screen and (max-width: 602px) {
   .profile__edit-button {
     max-width: 18px;
     max-height: 18px;
     margin-left: 6px;
+<<<<<<< HEAD
     background: url("../../../images/edit_button-icon-mobile.svg") no-repeat
       center;
+=======
+>>>>>>> c9b8445b94ab41a2309d1618e78d39d120b2051a
   }
 }
 .profile__edit-button:hover {
