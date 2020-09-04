@@ -20,43 +20,43 @@
                     <img src="./images/kusto.jpg" alt="Фотография автора" class="profile__image-author">
                     <div class="profile__description-author">
                         <h1 class="profile__title">Жак-Ив Кусто</h1>
-                        <button class="profile__edit-button" type="button"></button>
+                        <button class="profile__edit-button" type="button" aria-label="Открытие окна редактирования профиля автора"></button>
                         <p class="profile__about-author">Исследователь океана</p>
                     </div>
                 </div>
-                <button class="profile__add-button" type="button"></button>
+                <button class="profile__add-button" type="button" aria-label="Добавление карточки"></button>
             </section>
             <section class="grid-cards">
                 <ul class="cards">
                     <li class="card">
                         <img src="./images/kamchatka_photo.jpg" alt="Камчатка" class="card__image">
                         <h3 class="card__title">Камчатка</h3>
-                        <button class="card__like-button" type="button"></button>
+                        <button class="card__like-button" type="button" aria-label="Поставить лайк"></button>
                     </li>
                     <li class="card">
                         <img src="./images/baskunchak_lake.jpg" alt="озеро Баскунчак" class="card__image">
                         <h3 class="card__title">Баскунчак озеро</h3>
-                        <button class="card__like-button" type="button"></button>
+                        <button class="card__like-button" type="button" aria-label="Поставить лайк"></button>
                     </li>
                     <li class="card">
                         <img src="./images/mountain_dombay.jpg" alt="гора Домбай" class="card__image">
                         <h3 class="card__title">Домбай</h3>
-                        <button class="card__like-button" type="button"></button>
+                        <button class="card__like-button" type="button" aria-label="Поставить лайк"></button>
                     </li>
                     <li class="card">
                         <img src="./images/mountain_elbrus.jpg" alt="гора Эльбрус" class="card__image">
                         <h3 class="card__title">Гора Эльбрус</h3>
-                        <button class="card__like-button" type="button"></button>
+                        <button class="card__like-button" type="button" aria-label="Поставить лайк"></button>
                     </li>
                     <li class="card">
                         <img src="./images/karelia_photo.jpg" alt="Карелия" class="card__image">
                         <h3 class="card__title">Карелия</h3>
-                        <button class="card__like-button" type="button"></button>
+                        <button class="card__like-button" type="button" aria-label="Поставить лайк"></button>
                     </li>
                     <li class="card">
                         <img src="./images/lake_baikal.jpg" alt="озеро Байкал" class="card__image">
                         <h3 class="card__title">Байкал</h3>
-                        <button class="card__like-button" type="button"></button>
+                        <button class="card__like-button" type="button" aria-label="Поставить лайк"></button>
                     </li>
                 </ul>
             </section>
@@ -69,12 +69,12 @@
 
         <section class="popup">
             <div class="popup__container">
-                <button class="popup__close-button" type="button"></button>
+                <button class="popup__close-button" type="button" aria-label="Закрытие окна редактирования профиля"></button>
                 <h2 class="popup__title">Редактировать профиль</h2>
-                <form action="#" class="popup__form">
+                <form action="#" class="popup__form" name="popupForm">
                     <fieldset class="popup__form-input">
-                        <input type="text" name="nameAuthor" class="popup__form-author popup__form_name_author">
-                        <input type="text" name="aboutAuthor" class="popup__form-author popup__form_about_author">
+                        <input type="text" name="nameAuthor" class="popup__form-author popup__form_author_name">
+                        <input type="text" name="aboutAuthor" class="popup__form-author popup__form_author_about">
                     </fieldset>
                     <button type="submit" class="popup__submit-button">Сохранить</button>
                 </form>
