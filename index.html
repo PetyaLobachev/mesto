@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mesto</title>
+    <link rel="stylesheet" href="./pages/index.css" />
+</head>
+
+<body class="body">
+    <div class="page">
+        <header class="header">
+            <img class="header__logo" src="./images/logo_header.svg" alt="Лого - шапка сайта" />
+        </header>
+
+        <main class="content">
+            <section class="profile">
+                <div class="profile__author">
+                    <img src="./images/kusto.jpg" alt="Фотография автора" class="profile__image-author" />
+                    <div class="profile__description-author">
+                        <h1 class="profile__title">Жак-Ив Кусто</h1>
+                        <button class="profile__edit-button" type="button"
+                            aria-label="Открытие окна редактирования профиля автора"></button>
+                        <p class="profile__about-author">Исследователь океана</p>
+                    </div>
+                </div>
+                <button class="profile__add-button" type="button" aria-label="Добавление карточки"></button>
+            </section>
+            <section class="grid-cards">
+                <ul class="cards">
+                </ul>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
+        </footer>
+
+        <section class="popup">
+            <div class="popup__container">
+                <button class="popup__close-button" type="button"
+                    aria-label="Закрытие окна редактирования профиля"></button>
+                <h2 class="popup__title">Редактировать профиль</h2>
+                <form action="#" class="popup__form" name="popupForm">
+                    <fieldset class="popup__form-input">
+                        <input type="text" name="nameAuthor" class="popup__form-author popup__form_author_name" />
+                        <input type="text" name="aboutAuthor" class="popup__form-author popup__form_author_about" />
+                    </fieldset>
+                    <button type="submit" class="popup__submit-button">
+                        Сохранить
+                    </button>
+                </form>
+            </div>
+        </section>
+
+        <section class="popup popup__add-card">
+            <div class="popup__container">
+                <button class="popup__close-button popup__close-button_add-card" type="button"
+                    aria-label="Закрытие окна добавления карточки"></button>
+                <h2 class="popup__title popup__title_add-card">Новое место</h2>
+                <form action="#" class="popup__form popup__form_add-card" name="popupForm">
+                    <fieldset class="popup__form-input">
+                        <input type="text" placeholder="Название" name="cardName"
+                            class="popup__form-author popup__form_card_name" />
+                        <input type="text" placeholder="Ссылка на картинку" name="cardLink"
+                            class="popup__form-author popup__form_card_link" />
+                    </fieldset>
+                    <button type="submit" class="popup__submit-button popup__submit-button_add-card">Создать</button>
+                </form>
+            </div>
+        </section>
+
+        <section class="popup popup__open-card">
+            <div class="popup__container-open-card">
+                <button class="popup__close-button popup__close-button_open-card" type="button"
+                    aria-label="Закрытие окна просмотра карточки"></button>
+                <figure class="popup__open-card-figure">
+                    <img src="#" alt="#" class="popup__open-card-image">
+                    <figcaption class="popup__open-card-figcaption"></figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <template class="template">
+            <li class="card">
+                <img src="#" alt="#" class="card__image" />
+                <button class="card__delete" type="button" aria-label="Удалить карточку"></button>
+                <h3 class="card__title"></h3>
+                <button class="card__like-button" type="button" aria-label="Поставить лайк"></button>
+            </li>
+        </template>
+
+        <script src="./scripts/index.js" defer></script>
+    </div>
+</body>
+
+</html>
