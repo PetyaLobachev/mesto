@@ -12,6 +12,18 @@
   font-weight: normal;
   color: #000000;
 }
+@media screen and (max-width: 512px) {
+  .popup__form-author {
+    height: 24px;
+    font-size: 12px;
+    line-height: 15px;
+  }
+}
 .popup__form-author:last-of-type {
   margin-top: 28px;
+}
+@media screen and (max-width: 512px) {
+  .popup__form-author:last-of-type  {
+    margin-top: 20px;
+  }
 }

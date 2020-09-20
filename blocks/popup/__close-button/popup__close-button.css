@@ -15,12 +15,15 @@
   transition: 0.5s linear 0s;
   background: url("../../../images/close_popup-icon.svg") no-repeat center;
 }
-@media screen and (max-width: 402px) {
+ @media screen and (max-width: 512px) {
   .popup__close-button {
-    top: -41px;
-    right: 0;
+    width: 30px;
+    height: 30px;
+    background: url("../../../images/close_popup-icon-mobile.svg") no-repeat center;
+    top: -30px;
+    right: -30px;
   }
-}
+} 
 .popup__close-button:hover {
   cursor: pointer;
   opacity: 0.6;
