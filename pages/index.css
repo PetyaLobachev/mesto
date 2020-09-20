@@ -29,8 +29,11 @@
 @import url("../blocks/card/__image/card__image.css");
 @import url("../blocks/card/__title/card__title.css");
 @import url("../blocks/card/__like-button/card__like-button.css");
+<<<<<<< HEAD
 @import url("../blocks/card/__like-button/_active/card__like-button_active.css");
 @import url("../blocks/card/__delete/card__delete.css");
+=======
+>>>>>>> b61bbc3ad889ab273299b6edde144c03343f510d
 /* footer */
 @import url("../blocks/footer/footer.css");
 @import url("../blocks/footer/__copyright/footer__copyright.css");
@@ -44,8 +47,11 @@
 @import url("../blocks/popup/__form-input/popup__form-input.css");
 @import url("../blocks/popup/__form-author/popup__form-author.css");
 @import url("../blocks/popup/__submit-button/popup__submit-button.css");
+<<<<<<< HEAD
 @import url("../blocks/popup/__open-card-image/popup__open-card-image.css");
 @import url("../blocks/popup/__open-card/popup__open-card.css");
 @import url("../blocks/popup/__open-card-figcaption/popup__open-card-figcaption.css");
 @import url("../blocks/popup/__open-card-figure/popup__open-card-figure.css");
 @import url("../blocks/popup/__container-open-card/popup__container-open-card.css");
+=======
+>>>>>>> b61bbc3ad889ab273299b6edde144c03343f510d
