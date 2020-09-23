@@ -34,7 +34,7 @@
 /* footer */
 @import url("../blocks/footer/footer.css");
 @import url("../blocks/footer/__copyright/footer__copyright.css");
-/* popup - всплывающее окно редактора профиля */
+/* popup - всплывающее окно редактора профиля, добавления карточки*/
 @import url("../blocks/popup/popup.css");
 @import url("../blocks/popup/_opened/popup_opened.css");
 @import url("../blocks/popup/__container/popup__container.css");
