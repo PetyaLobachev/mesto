@@ -54,7 +54,7 @@ const initialCards = [
       "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg",
   },
 ];
-//Создан объект для получения значений  из попап input-ов для создания новой карточки
+//Создан объект для создания новой карточки
 const card = {
   name: popupFormCardName,
   link: popupFormCardLink
@@ -84,7 +84,6 @@ function popupOpenedProfileHandler() {
 }
 //Подключаем слушатель для переменной profileEditButton (кнопка с классом .profile__edit-button)
 profileEditButton.addEventListener("click", popupOpenedProfileHandler);
-
 //Функция закрытия попап редактирования профиля
 function popupClosedHandler() {
   closePopap(popup)
@@ -101,10 +100,15 @@ function formSubmitHandlerAddCard(evt) {
   card.name = popupFormCardName.value,
   card.link = popupFormCardLink.value
   openPopap(popupAddCard)
-  renderCard(card);
+  createCard(card)
+  addCard(card)
   resetForm()
   popupClosedAddCardHandler();
 }
+// Добавление новой карточки в начало страницы
+function addCard(card){
+  cards.prepend(createCard(card));
+  }
 // Сброс полей input-ов до начального состояния
 function resetForm() {
   popupFormAddCard.reset();
@@ -138,8 +142,8 @@ function popupClosedOpenCardHandler() {
   closePopap(popupOpenCard)
 }
 /*-------------------------------Вывод карточек на экран-------------------------------*/
-//Функция вывода карточек на экран (из массива и добавление новой карточки)
-function renderCard(card) {
+//Функция создания карточек 
+function createCard(card) {
   const cardTemplate = document.querySelector(".template").content;
   const cardElement = cardTemplate.cloneNode(true);
   const cardTitle = cardElement.querySelector(".card__title");
@@ -158,11 +162,13 @@ function renderCard(card) {
   cardImage.addEventListener("click",() => {
     openImageCardHandler(cardImage, cardTitle)
   });
-  locationElementsOnPage(cardElement)
+  return cardElement;
 }
 // Перебор массива для вывода объектов массива на экран
-initialCards.forEach(renderCard);
-// Расположение элементов на экране массива и новой карточки
-function locationElementsOnPage(cardElement){
-  cards.prepend(cardElement);
+  initialCards.forEach(renderCards) 
+    
+// Добавление карточек из массива в конец страницы
+function renderCards(card) {
+    cards.append(createCard(card))
 }
+
