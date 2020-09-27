@@ -65,8 +65,8 @@ function openPopap(arg) {
   arg.classList.add("popup_opened");
 }
 //Функция закрытия попапов
-function closePopap(arg) {
-  arg.classList.remove("popup_opened");
+function closePopap(event) {
+  event.classList.remove("popup_opened");
 }
 /*-------------------------------Редактирования профиля-------------------------------*/
 //Функция обрабочик вывода данных через input в профиль автора
@@ -169,6 +169,6 @@ function createCard(card) {
     
 // Добавление карточек из массива в конец страницы
 function renderCards(card) {
-    cards.append(createCard(card))
+    cards.prepend(createCard(card))
 }
 
