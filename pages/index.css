@@ -49,3 +49,8 @@
 @import url("../blocks/popup/__open-card-figcaption/popup__open-card-figcaption.css");
 @import url("../blocks/popup/__open-card-figure/popup__open-card-figure.css");
 @import url("../blocks/popup/__container-open-card/popup__container-open-card.css");
+@import url("../blocks/popup/__input/popup__input.css");
+@import url("../blocks/popup/__input/_type_error/popup__input_type_error.css");
+@import url("../blocks/popup/__form-input-error/popup__form-input-error.css");
+@import url("../blocks/popup/__form-input-error/_active/popup__form-input-error_active.css");
+@import url("../blocks/popup/__button_disabled/popup__button_disabled.css");

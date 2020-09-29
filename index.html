@@ -42,10 +42,14 @@
                 <button class="popup__close-button" type="button"
                     aria-label="Закрытие окна редактирования профиля"></button>
                 <h2 class="popup__title">Редактировать профиль</h2>
-                <form action="#" class="popup__form" name="popupForm">
+                <form class="popup__form" action="#" name="popupForm" novalidate>
                     <fieldset class="popup__form-input">
-                        <input type="text" name="nameAuthor" class="popup__form-author popup__form_author_name" />
-                        <input type="text" name="aboutAuthor" class="popup__form-author popup__form_author_about" />
+                        <input class="popup__input popup__form-author popup__form_author_name" id="nameAuthor-input" type="text"
+                            name="nameAuthor" placeholder="Имя" required minlength="2" maxlength="40"/>
+                            <span class="popup__form-input-error" id="nameAuthor-input-error">Вы пропустили это поле.</span>
+                        <input class="popup__input popup__form-author popup__form_author_about" id="aboutAuthor-input" type="text"
+                            name="aboutAuthor" placeholder="О себе" required minlength="2" maxlength="200"/>
+                            <span class="popup__form-input-error" id="aboutAuthor-input-error">Вы пропустили это поле.</span>
                     </fieldset>
                     <button type="submit" class="popup__submit-button">
                         Сохранить
@@ -59,14 +63,18 @@
                 <button class="popup__close-button popup__close-button_add-card" type="button"
                     aria-label="Закрытие окна добавления карточки"></button>
                 <h2 class="popup__title popup__title_add-card">Новое место</h2>
-                <form action="#" class="popup__form popup__form_add-card" name="popupForm">
+                <form  class="popup__form popup__form_add-card" action="#" name="popupForm" novalidate>
                     <fieldset class="popup__form-input">
-                        <input type="text" placeholder="Название" name="cardName"
-                            class="popup__form-author popup__form_card_name" />
-                        <input type="url" placeholder="Ссылка на картинку" name="cardLink"
-                            class="popup__form-author popup__form_card_link" />
+                        <input class="popup__input popup__form-author popup__form_card_name" id="cardName-input" type="text"
+                            placeholder="Название" name="cardName" required minlength="1" maxlength="30"/>
+                            <span class="popup__form-input-error" id="cardName-input-error">Вы пропустили это поле.</span>
+                        <input class="popup__input popup__form-author popup__form_card_link" id="cardLink-input" type="url"
+                            placeholder="Ссылка на картинку" name="cardLink" required/>
+                        <span class="popup__form-input-error" id="cardLink-input-error">Вы пропустили это поле.</span>
                     </fieldset>
-                    <button type="submit" class="popup__submit-button popup__submit-button_add-card">Создать</button>
+                    <button type="submit" class="popup__submit-button">
+                        Создать
+                    </button>
                 </form>
             </div>
         </section>
@@ -76,7 +84,7 @@
                 <button class="popup__close-button popup__close-button_open-card" type="button"
                     aria-label="Закрытие окна просмотра карточки"></button>
                 <figure class="popup__open-card-figure">
-                    <img src="#" alt="#" class="popup__open-card-image">
+                    <img src="#" alt="#" class="popup__open-card-image" />
                     <figcaption class="popup__open-card-figcaption"></figcaption>
                 </figure>
             </div>
@@ -92,6 +100,7 @@
         </template>
 
         <script src="./scripts/index.js" defer></script>
+        <script src="./scripts/validate.js" defer></script>
     </div>
 </body>
 

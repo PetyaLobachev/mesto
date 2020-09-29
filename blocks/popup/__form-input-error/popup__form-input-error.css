@@ -1,0 +1,9 @@
+.popup__form-input-error {
+    transition: opacity 0.5s ;
+    opacity: 0;
+    font-size: 12px;
+    line-height: 15px;
+    font-weight: normal;
+    color: #FF0000
+    
+}
