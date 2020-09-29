@@ -70,7 +70,6 @@ const card = {
 //Функция открытия попапов
 function openPopup(evt) {
   evt.classList.add("popup_opened");
-  evt.classList.add("popup_opened_on_cursor");
 }
 //Функция закрытия попапов
 function closePopup(evt) {
