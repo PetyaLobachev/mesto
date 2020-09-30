@@ -77,7 +77,8 @@ function closePopup(evt) {
 }
 //Функция закрытия попапа по клику кнопки Escape
 function closePopupOnEsc(event) {
-  if (event.key === "Escape") {
+  const Esc = 'Escape';
+  if (event.key === Esc) {
     popupClosedHandler();
     popupClosedOpenCardHandler();
     popupClosedAddCardHandler();
@@ -88,10 +89,9 @@ document.addEventListener("keydown", closePopupOnEsc);
 
 //Функция закрытия попапа по клику на область затеменения(overlay) вокруг попап-контейнера
 function closePopapOnOverlay(event) {
-  console.log({
-    target: event.target,
-    currentTarget: event.currentTarget,
-  });
+    ({target: event.target,
+    currentTarget: event.currentTarget
+    })
   if (event.target !== event.currentTarget) {
     return;
   }
@@ -138,7 +138,8 @@ popupForm.addEventListener("submit", formSubmitProfileHandler);
 //Функция добавления новой карточки
 function formSubmitHandlerAddCard(evt) {
   evt.preventDefault();
-  (card.name = popupFormCardName.value), (card.link = popupFormCardLink.value);
+  (card.name = popupFormCardName.value),
+  (card.link = popupFormCardLink.value);
   openPopup(popupAddCard);
   createCard(card);
   addCard(card);
