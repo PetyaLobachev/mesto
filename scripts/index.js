@@ -14,20 +14,14 @@ const addButton = document.querySelector(".profile__add-button");
 const popupTitleAddCard = popupAddCard.querySelector(".popup__title_add-card");
 const popupFormCardName = popupAddCard.querySelector(".popup__form_card_name");
 const popupFormCardLink = popupAddCard.querySelector(".popup__form_card_link");
-const popupCloseBattonAddCard = popupAddCard.querySelector(
-  ".popup__close-button_add-card"
-);
-const popupSubmitButtonAddCard = popupAddCard.querySelector(
-  ".popup__submit-button_add-card"
-);
+const popupCloseBattonAddCard = popupAddCard.querySelector(".popup__close-button_add-card");
+const popupSubmitButtonAddCard = popupAddCard.querySelector(".popup__submit-button_add-card");
 const popupOpenCardImage = document.querySelector(".popup__open-card-image");
-const popupOpenCardFigcaption = document.querySelector(
-  ".popup__open-card-figcaption"
-);
+const popupOpenCardFigcaption = document.querySelector(".popup__open-card-figcaption");
 const popupOpenCard = document.querySelector(".popup__open-card");
-const popupCloseOpenCard = document.querySelector(
-  ".popup__close-button_open-card"
-);
+const popupCloseOpenCard = document.querySelector(".popup__close-button_open-card");
+//Клавиши клавиатуры
+const esc = 'Escape';
 //Массив карточек, добавляется при загрузке страницы
 const initialCards = [
   {
@@ -77,8 +71,8 @@ function closePopup(evt) {
 }
 //Функция закрытия попапа по клику кнопки Escape
 function closePopupOnEsc(event) {
-  const Esc = 'Escape';
-  if (event.key === Esc) {
+  const esc = 'Escape';
+  if (event.key === esc) {
     popupClosedHandler();
     popupClosedOpenCardHandler();
     popupClosedAddCardHandler();
@@ -89,9 +83,6 @@ document.addEventListener("keydown", closePopupOnEsc);
 
 //Функция закрытия попапа по клику на область затеменения(overlay) вокруг попап-контейнера
 function closePopapOnOverlay(event) {
-    ({target: event.target,
-    currentTarget: event.currentTarget
-    })
   if (event.target !== event.currentTarget) {
     return;
   }
