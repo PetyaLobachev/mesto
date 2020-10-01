@@ -40,12 +40,12 @@ function hasInvalidInput(inputList) {
   });
 }
 //Функция стилизации кнопок submit
-function toggleButtonState(inputList, inputSubmitButton, params) {
+function toggleButtonState(inputList, inputSubmitButton, parametrs) {
   if (hasInvalidInput(inputList)) {
-    inputSubmitButton.classList.add(params.inactiveButtonClass);
+    inputSubmitButton.classList.add(parametrs.inactiveButtonClass);
     inputSubmitButton.setAttribute("disabled", true);
   } else {
-    inputSubmitButton.classList.remove(params.inactiveButtonClass);
+    inputSubmitButton.classList.remove(parametrs.inactiveButtonClass);
     inputSubmitButton.removeAttribute("disabled");
   }
 }
