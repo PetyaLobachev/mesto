@@ -71,7 +71,6 @@ function closePopup(evt) {
 }
 //Функция закрытия попапа по клику кнопки Escape
 function closePopupOnEsc(event) {
-  const esc = 'Escape';
   if (event.key === esc) {
     popupClosedHandler();
     popupClosedOpenCardHandler();
