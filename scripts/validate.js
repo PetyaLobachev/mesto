@@ -33,7 +33,7 @@ function setEventListeners(popupForm, parametrs) {
     });
   });
 }
-//Функция проверяет корректность полей ввода
+//Функция проверяет корректность полей ввода для кнопки
 function hasInvalidInput(inputList) {
   return inputList.some(function (popupInput) {
     return !popupInput.validity.valid;
