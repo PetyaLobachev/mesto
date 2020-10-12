@@ -1,142 +1,78 @@
 /*-------------------------------Валидация форм средствами javaScript-------------------------------*/
-//Функция показывает ошибку в поле ввода(input)
-function showInputError(popupForm, popupInput, errorMessege, parametrs) {
-  const errorElement = popupForm.querySelector(`#${popupInput.id}-error`);
-  popupInput.classList.add(parametrs.inputErrorClass);
+//Класс Валидации форм
+class FormValidator {
+  constructor(parametrs, formSelector) {
+  this._formElement = document.querySelector(formSelector);
+  this._formSelector = formSelector;
+  this._inputSelector = parametrs.inputSelector;
+  this._submitButtonSelector = parametrs.submitButtonSelector;
+  this._inactiveButtonClass = parametrs.inactiveButtonClass;
+  this._inputErrorClass = parametrs.inputErrorClass;
+  this._errorClass = parametrs.errorClass;
+  }
+  //Приватный метод показывает ошибку в поле ввода(input)
+_showInputError(popupInput, errorMessege) {
+  const errorElement = this._formElement.querySelector(`#${popupInput.id}-error`);
+  popupInput.classList.add(this._inputErrorClass);
   errorElement.textContent = errorMessege;
-  errorElement.classList.add(parametrs.errorClass);
+  errorElement.classList.add(this._errorClass);
 }
-//Функция скрывает ошибку в поле ввода(input)
-function hideInputError(popupForm, popupInput, parametrs) {
-  const errorElement = popupForm.querySelector(`#${popupInput.id}-error`);
-  popupInput.classList.remove(parametrs.inputErrorClass);
-  errorElement.classList.remove(parametrs.errorClass);
+//Приватный метод скрывает ошибку в поле ввода(input)
+_hideInputError(popupInput) {
+  const errorElement = this._formElement.querySelector(`#${popupInput.id}-error`);
+  popupInput.classList.remove(this._inputErrorClass);
+  errorElement.classList.remove(this._errorClass);
   errorElement.textContent = "";
 }
-//Функция проверяет массив полей ввода на предмет корректности введеных данных и в зависимости от этого вызывает функции показать или скрыть ошибку
-function checkInputValidity(popupForm, popupInput, parametrs) {
+//Приватный метод проверяет массив полей ввода на предмет корректности введеных данных и 
+// в зависимости от этого вызывает методы показать или скрыть ошибку
+_checkInputValidity(popupInput) {
   if (!popupInput.validity.valid) {
-    showInputError(popupForm, popupInput, popupInput.validationMessage, parametrs);
+    this._showInputError(popupInput, popupInput.validationMessage);
   } else {
-    hideInputError(popupForm, popupInput, parametrs);
+    this._hideInputError(popupInput);
   }
 }
-//Функция устанавливает слушителя событий полю ввода, измиеняет состояние кнопки и вызывает функцию проверки введенных данных
-function setEventListeners(popupForm, parametrs) {
-  const inputList = Array.from(popupForm.querySelectorAll(parametrs.inputSelector));
-  const inputSubmitButton = popupForm.querySelector(parametrs.submitButtonSelector);
-  toggleButtonState(inputList, inputSubmitButton, parametrs);
-  inputList.forEach(function (popupInput) {
-    popupInput.addEventListener("input", function () {
-      checkInputValidity(popupForm, popupInput, parametrs);
-      toggleButtonState(inputList, inputSubmitButton, parametrs);
-    });
-  });
-}
-//Функция проверяет корректность полей ввода для кнопки
-function hasInvalidInput(inputList) {
-  return inputList.some(function (popupInput) {
+//Приватный метод проверяет корректность полей ввода для кнопки submit
+_hasInvalidInput(inputList) {
+  return inputList.some(function(popupInput) {
     return !popupInput.validity.valid;
   });
 }
-//Функция стилизации кнопок submit
-function toggleButtonState(inputList, inputSubmitButton, parametrs) {
-  if (hasInvalidInput(inputList)) {
-    inputSubmitButton.classList.add(parametrs.inactiveButtonClass);
+//Приватный метод стилизации кнопок submit
+_toggleButtonState(inputList, inputSubmitButton) {
+  if (this._hasInvalidInput(inputList)) {
+    inputSubmitButton.classList.add(this._inactiveButtonClass);
     inputSubmitButton.setAttribute("disabled", true);
   } else {
-    inputSubmitButton.classList.remove(parametrs.inactiveButtonClass);
+    inputSubmitButton.classList.remove(this._inactiveButtonClass);
     inputSubmitButton.removeAttribute("disabled");
   }
 }
-//Функция находит формы в документе и вызывает функцию слушателя событий
-const enableValidation = (parametrs) => {
-  const formList = Array.from(document.querySelectorAll(parametrs.formSelector));
-  formList.forEach(function (popupForm) {
-    popupForm.addEventListener("submit", function (event) {
-      event.preventDefault();
+//Приватный метод проходит по массиву input^ов => устанавливает слушителя событий полю ввода, 
+// в функции колбека вызывает методы 
+// 1. _checkInputValidity - проверки валиднойсти input^ов,
+// 2. _toggleButtonState - переключение состояния кнопки.
+_setEventListeners() {
+  const inputList = Array.from(this._formElement.querySelectorAll(this._inputSelector));
+  const inputSubmitButton = this._formElement.querySelector(this._submitButtonSelector);
+  this._toggleButtonState(inputList, inputSubmitButton);
+  inputList.forEach((popupInput) => {
+    popupInput.addEventListener("input", () => {
+      this._checkInputValidity(popupInput);
+      this._toggleButtonState(inputList, inputSubmitButton);
     });
-    setEventListeners(popupForm, parametrs);
   });
+  
 }
-//Вызов функции включения валидации (с объектом в аргументе)
-enableValidation({
-  formSelector: ".popup__form",
-  inputSelector: ".popup__input",
-  submitButtonSelector: ".popup__submit-button",
-  inactiveButtonClass: "popup__button_disabled",
-  inputErrorClass: "popup__input_type_error",
-  errorClass: "popup__form-input-error_active",
-});
+//Публичный метод включения валидации формы
+enableValidation (){
+  function submitFormHandler(event) {
+  event.preventDefault();
+  }
+  this._formElement.addEventListener("submit", submitFormHandler)
+  this._setEventListeners();
+}
+}
 
-
-// /*-------------------------------Валидация форм средствами javaScript-------------------------------*/
-// //Функция показывает ошибку в поле ввода(input)
-// function showInputError(popupForm, popupInput, errorMessege, parametrs) {
-//   const errorElement = popupForm.querySelector(`#${popupInput.id}-error`);
-//   popupInput.classList.add(parametrs.inputErrorClass);
-//   errorElement.textContent = errorMessege;
-//   errorElement.classList.add(parametrs.errorClass);
-// }
-// //Функция скрывает ошибку в поле ввода(input)
-// function hideInputError(popupForm, popupInput, parametrs) {
-//   const errorElement = popupForm.querySelector(`#${popupInput.id}-error`);
-//   popupInput.classList.remove(parametrs.inputErrorClass);
-//   errorElement.classList.remove(parametrs.errorClass);
-//   errorElement.textContent = "";
-// }
-// //Функция проверяет массив полей ввода на предмет корректности введеных данных и в зависимости от этого вызывает функции показать или скрыть ошибку
-// function checkInputValidity(popupForm, popupInput, parametrs) {
-//   if (!popupInput.validity.valid) {
-//     showInputError(popupForm, popupInput, popupInput.validationMessage, parametrs);
-//   } else {
-//     hideInputError(popupForm, popupInput, parametrs);
-//   }
-// }
-// //Функция устанавливает слушителя событий полю ввода, измиеняет состояние кнопки и вызывает функцию проверки введенных данных
-// function setEventListeners(popupForm, parametrs) {
-//   const inputList = Array.from(popupForm.querySelectorAll(parametrs.inputSelector));
-//   const inputSubmitButton = popupForm.querySelector(parametrs.submitButtonSelector);
-//   toggleButtonState(inputList, inputSubmitButton, parametrs);
-//   inputList.forEach(function (popupInput) {
-//     popupInput.addEventListener("input", function () {
-//       checkInputValidity(popupForm, popupInput, parametrs);
-//       toggleButtonState(inputList, inputSubmitButton, parametrs);
-//     });
-//   });
-// }
-// //Функция проверяет корректность полей ввода для кнопки
-// function hasInvalidInput(inputList) {
-//   return inputList.some(function (popupInput) {
-//     return !popupInput.validity.valid;
-//   });
-// }
-// //Функция стилизации кнопок submit
-// function toggleButtonState(inputList, inputSubmitButton, parametrs) {
-//   if (hasInvalidInput(inputList)) {
-//     inputSubmitButton.classList.add(parametrs.inactiveButtonClass);
-//     inputSubmitButton.setAttribute("disabled", true);
-//   } else {
-//     inputSubmitButton.classList.remove(parametrs.inactiveButtonClass);
-//     inputSubmitButton.removeAttribute("disabled");
-//   }
-// }
-// //Функция находит формы в документе и вызывает функцию слушателя событий
-// const enableValidation = (parametrs) => {
-//   const formList = Array.from(document.querySelectorAll(parametrs.formSelector));
-//   formList.forEach(function (popupForm) {
-//     popupForm.addEventListener("submit", function (event) {
-//       event.preventDefault();
-//     });
-//     setEventListeners(popupForm, parametrs);
-//   });
-// }
-// //Вызов функции включения валидации (с объектом в аргументе)
-// enableValidation({
-//   formSelector: ".popup__form",
-//   inputSelector: ".popup__input",
-//   submitButtonSelector: ".popup__submit-button",
-//   inactiveButtonClass: "popup__button_disabled",
-//   inputErrorClass: "popup__input_type_error",
-//   errorClass: "popup__form-input-error_active",
-// });
+export {FormValidator}
