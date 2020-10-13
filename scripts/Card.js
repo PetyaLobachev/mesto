@@ -5,7 +5,7 @@ class Card {
     this._name = card.name;
     this._link = card.link;
     this._cardSelector = cardSelector;
-    this.openImageCardHandler = openImageCardHandler;
+    this._openImageCardHandler = openImageCardHandler;
   }
   //Приватный метод получения элементов Template-контейнера
   _getTemplate() {
@@ -42,7 +42,7 @@ class Card {
     const cardImage = this._cardElement.querySelector(".card__image");
     const cardTitle = this._cardElement.querySelector(".card__title");
     cardImage.addEventListener("click", () => {
-      this.openImageCardHandler(cardImage, cardTitle);
+      this._openImageCardHandler(cardImage, cardTitle);
     });
   }
 }
