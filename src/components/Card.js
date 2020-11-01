@@ -1,11 +1,10 @@
-import { openImageCardHandler } from "./index.js";
-//Класс создания карточки
-class Card {
-  constructor(card, cardSelector) {
-    this._name = card.name;
-    this._link = card.link;
+
+export class Card {
+  constructor({ card, handleCardClick }, cardSelector) {
+    this._name = card.cardName;
+    this._link = card.cardLink;
     this._cardSelector = cardSelector;
-    this._openImageCardHandler = openImageCardHandler;
+    this._handleCardClick = handleCardClick;
   }
   //Приватный метод получения элементов Template-контейнера
   _getTemplate() {
@@ -42,9 +41,7 @@ class Card {
     const cardImage = this._cardElement.querySelector(".card__image");
     const cardTitle = this._cardElement.querySelector(".card__title");
     cardImage.addEventListener("click", () => {
-      this._openImageCardHandler(cardImage, cardTitle);
+      this._handleCardClick(cardImage, cardTitle);
     });
   }
 }
-
-export { Card };

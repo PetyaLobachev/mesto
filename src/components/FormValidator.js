@@ -1,6 +1,6 @@
 /*-------------------------------Валидация форм средствами javaScript-------------------------------*/
 //Класс Валидации форм
-class FormValidator {
+export class FormValidator {
   constructor(parametrs, formSelector) {
     this._formElement = document.querySelector(formSelector);
     this._formSelector = formSelector;
@@ -81,5 +81,3 @@ class FormValidator {
     this._setEventListeners();
   }
 }
-
-export { FormValidator };
