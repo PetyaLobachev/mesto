@@ -1,6 +1,6 @@
 # **Место**
 
-_[Социальная сеть: Место](https://petyalobachev.github.io/mesto/index.html)_
+_[Социальная сеть: Место](https://petyalobachev.github.io/mesto//src/index.html)_
 
 - Сайт одностроничный - cостоит из шапки сайта,
   секций основного контента и нижнего колонтитула.
