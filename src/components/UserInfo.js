@@ -6,8 +6,6 @@ export class UserInfo {
     this._profileAboutAuthor = document.querySelector(profileAboutAuthor);
   }
   getUserInfo() {
-    nameAuthor.value = this._profileTitle.textContent;
-    aboutAuthor.value = this._profileAboutAuthor.textContent;
     return { nameAuthor, aboutAuthor };
   }
   setUserInfo({ nameAuthor, aboutAuthor }) {

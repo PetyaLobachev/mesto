@@ -1,17 +1,19 @@
-import '../pages/index.css';
+import "../pages/index.css";
 import { Card } from "../components/Card.js";
 import { FormValidator } from "../components/FormValidator.js";
 import { Section } from "../components/Section.js";
-import { Popup } from "../components/Popup.js";
 import { PopupWithImage } from "../components/PopupWithImage.js";
 import { UserInfo } from "../components/UserInfo.js";
 import { PopupWithForm } from "../components/PopupWithForm.js";
 
 const profileEditButton = document.querySelector(".profile__edit-button");
+const addButton = document.querySelector(".profile__add-button");
 const popup = document.querySelector(".popup");
 export const nameAuthor = popup.querySelector(".popup__form_author_name");
 export const aboutAuthor = popup.querySelector(".popup__form_author_about");
-const addButton = document.querySelector(".profile__add-button");
+const container = document.querySelector(".cards")
+const profileAboutAuthor = document.querySelector(".profile__about-author")
+const profileTitle = document.querySelector(".profile__title")
 //--------------------------------------------------//
 //Клавиши клавиатуры
 export const esc = "Escape";
@@ -50,14 +52,6 @@ const initialCards = [
   },
 ];
 //--------------------------------------------------//
-// Массив с объектом для создания новой карточки
-const addCard = [
-  {
-    cardName: ".popup__form_card_name",
-    cardLink: ".popup__form_card_link",
-  },
-];
-//--------------------------------------------------//
 //Объект с классами селекторов для валидации форм
 export const parametrs = {
   formSelectorAddCard: ".popup__form_add-card",
@@ -68,97 +62,81 @@ export const parametrs = {
   inputErrorClass: "popup__input_type_error",
   errorClass: "popup__form-input-error_active",
 };
-//--------------------------------------------------//
-//Инициализация экземпляра класса Popup для открытия и закрытия popup редактирования профиля
-const popupOpenedAndClosedEditProfile = new Popup({
-  popupSelector: ".popup",
-  closeButtonSelector: ".popup__close-button",
-});
-profileEditButton.addEventListener("click", () => {
-  popupOpenedAndClosedEditProfile.open();
-  popupOpenedAndClosedEditProfile.setEventListenersPopup();
-  userInfo.getUserInfo();
-});
-//--------------------------------------------------//
-//Инициализация экземпляра Popup для открытия и закрытия popup добавления новой карточки
-const popupOpenedAndClosedAddCard = new Popup({
+//--------------------------------------------------// 
+//Функция вывода карточек на экран
+const renderArrayCards = new Section(
+  {
+    data: initialCards,
+    renderer,
+  },
+  ".cards"
+);
+//Функция обработчик клика по карточке
+const handleCardClick = (cardImage, cardTitle) => {
+  popupWithImage.open(cardImage, cardTitle);
+};
+//Функция создания карточек из класса Card
+function renderer (card)  {
+  const itemCard = new Card( card.cardName, card.cardLink, handleCardClick , ".template");
+  const cardElement = itemCard.createCard();
+  renderArrayCards.addItemsOnContainer(cardElement);
+}
+renderArrayCards.renderItems();
+
+//Инициализация класса добавления новой карточки в разметку
+const popupWithFormAddNewCard = new PopupWithForm({
   popupSelector: ".popup__add-card",
   closeButtonSelector: ".popup__close-button_add-card",
+   submitForm: (newCard) => {
+    const itemCard = new Card( newCard["cardName"], newCard["cardLink"],handleCardClick , ".template");
+    const cardElement = itemCard.createCard();
+    container.prepend(cardElement);
+  }
 });
-addButton.addEventListener("click", () => {
-  popupOpenedAndClosedAddCard.open();
-  popupOpenedAndClosedAddCard.setEventListenersPopup();
+
+addButton.addEventListener("click", function () {
+  popupWithFormAddNewCard.open(); 
 });
-//--------------------------------------------------//
-//Инициализация экземпляра Popup для открытия и закрытия popup фотографии карточки
+popupWithFormAddNewCard.setEventListeners();
+//--------------------------------------------------// 
+
+//--------------------------------------------------// 
+//Инициализация класса  для открытия и закрытия popup фотографии карточки
 const popupWithImage = new PopupWithImage({
   popupSelector: ".popup__open-card",
   closeButtonSelector: ".popup__close-button_open-card",
 });
-//--------------------------------------------------//
-//Перебор массива объектов => создание initial карточек из класса Card и вывод их на страницу через экземпляр класса Section
-const renderArrayCards = new Section(
-  {
-    data: initialCards,
-    renderer: (card) => {
-      const handleCardClick = (cardImage, cardTitle) => {
-        popupWithImage.open(cardImage, cardTitle);
-        popupWithImage.setEventListenersPopup();
-      };
-      const itemCard = new Card({ card, handleCardClick }, ".template");
-      const cardElement = itemCard.createCard();
-      renderArrayCards.addItemsOnContainer(cardElement);
-    },
-  },
-  ".cards"
-);
+popupWithImage.setEventListeners();
+//--------------------------------------------------// 
 
-renderArrayCards.renderItems();
-//--------------------------------------------------//
-//Создание новой карточки из попапа и вывод их на страницу через экземпляр класса Section
-const renderAddCards = new Section(
-  {
-    data: addCard,
-    renderer: () => {
-      const popupWithFormAddCard = new PopupWithForm({
-        popupSelector: ".popup__add-card",
-        formSelector: ".popup__form_add-card",
-        hundleSubmitForm: (card) => {
-          const handleCardClick = (cardImage, cardTitle) => {
-            popupWithImage.open(cardImage, cardTitle);
-            popupWithImage.setEventListenersPopup();
-          };
-          const itemCard = new Card({ card, handleCardClick }, ".template");
-          const cardElement = itemCard.createCard();
-          renderAddCards.addItemsOnContainer(cardElement);
-          popupOpenedAndClosedAddCard.close();
-        },
-      });
-      popupWithFormAddCard.setEventListenersPopup();
-    },
-  },
-  ".cards"
-);
-renderAddCards.renderItems();
-//--------------------------------------------------//
-//Инициализация класса с информацией об авторе
+//--------------------------------------------------// 
+//Инициализация класса с информацией об авторе 
 const userInfo = new UserInfo({
   profileTitle: ".profile__title",
   profileAboutAuthor: ".profile__about-author",
 });
-//Инициализация класса добавления информации об авторе на страницу
+//Инициализация классов добавления информации об авторе на страницу 
 const popupWithFormEditProfile = new PopupWithForm({
   popupSelector: ".popup",
-  formSelector: ".popup__form",
-  hundleSubmitForm: () => {
+  closeButtonSelector: ".popup__close-button",
+  submitForm: () => {
     userInfo.setUserInfo({ nameAuthor, aboutAuthor });
-    popupOpenedAndClosedEditProfile.close();
+    popupWithFormEditProfile.close();
   },
 });
 
-popupWithFormEditProfile.setEventListenersPopup();
-//--------------------------------------------------//
-//Создание нового объекта - экземляра класса для валидации формы EditProfile
+profileEditButton.addEventListener("click", function () {
+  popupWithFormEditProfile.open();
+  nameAuthor.value = profileTitle.textContent;
+  aboutAuthor.value = profileAboutAuthor.textContent;
+  userInfo.getUserInfo();
+});
+
+popupWithFormEditProfile.setEventListeners();
+//--------------------------------------------------// 
+
+//--------------------------------------------------// 
+//Создание нового объекта - экземляра класса для валидации формы EditProfile 
 const formValidatorEditProfile = new FormValidator(
   parametrs,
   parametrs.formSelector
@@ -171,19 +149,3 @@ const formValidatorAddCard = new FormValidator(
   parametrs.formSelectorAddCard
 );
 formValidatorAddCard.enableValidation();
-//--------------------------------------------------//
-
-// const popupCloseBattonAddCard = popupAddCard.querySelector(
-//   ".popup__close-button_add-card"
-// );
-// const popupOpenCard = document.querySelector(".popup__open-card");
-// const popupCloseOpenCard = document.querySelector(
-//   ".popup__close-button_open-card"
-// );
-// const cards = document.querySelector(".cards");
-// const popupFormAddCard = popupAddCard.querySelector(".popup__form_add-card");
-// const popupCloseButton = document.querySelector(".popup__close-button");
-// const popupForm = popup.querySelector(".popup__form");
-// const popupFormCardName = popupAddCard.querySelector(".popup__form_card_name");
-// const popupFormCardLink = popupAddCard.querySelector(".popup__form_card_link");
-// const popupAddCard = document.querySelector(".popup__add-card");

@@ -6,8 +6,9 @@ export class Section {
   }
 
   addItemsOnContainer(cardElement) {
-    this._container.prepend(cardElement);
+    this._container.append(cardElement);
   }
+
   renderItems() {
     this._renderedItems.forEach((card) => {
       this._renderer(card);
