@@ -8,10 +8,8 @@ import { PopupWithForm } from "../components/PopupWithForm.js";
 
 const profileEditButton = document.querySelector(".profile__edit-button");
 const addButton = document.querySelector(".profile__add-button");
-//const popup = document.querySelector(".popup");
 const nameAuthor = document.querySelector(".popup__form_author_name");
 const aboutAuthor = document.querySelector(".popup__form_author_about");
-const container = document.querySelector(".cards");
 //--------------------------------------------------//
 //Клавиши клавиатуры
 export const esc = "Escape";
