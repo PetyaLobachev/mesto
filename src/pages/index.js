@@ -8,16 +8,15 @@ import { PopupWithForm } from "../components/PopupWithForm.js";
 
 const profileEditButton = document.querySelector(".profile__edit-button");
 const addButton = document.querySelector(".profile__add-button");
-const popup = document.querySelector(".popup");
-export const nameAuthor = popup.querySelector(".popup__form_author_name");
-export const aboutAuthor = popup.querySelector(".popup__form_author_about");
-const container = document.querySelector(".cards")
-const profileAboutAuthor = document.querySelector(".profile__about-author")
-const profileTitle = document.querySelector(".profile__title")
+//const popup = document.querySelector(".popup");
+const nameAuthor = document.querySelector(".popup__form_author_name");
+const aboutAuthor = document.querySelector(".popup__form_author_about");
+const container = document.querySelector(".cards");
 //--------------------------------------------------//
 //Клавиши клавиатуры
 export const esc = "Escape";
 //--------------------------------------------------//
+
 //Массив карточек, добавляется при загрузке страницы
 const initialCards = [
   {
@@ -51,7 +50,7 @@ const initialCards = [
       "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg",
   },
 ];
-//--------------------------------------------------//
+
 //Объект с классами селекторов для валидации форм
 export const parametrs = {
   formSelectorAddCard: ".popup__form_add-card",
@@ -62,88 +61,104 @@ export const parametrs = {
   inputErrorClass: "popup__input_type_error",
   errorClass: "popup__form-input-error_active",
 };
-//--------------------------------------------------// 
-//Функция вывода карточек на экран
-const renderArrayCards = new Section(
-  {
-    data: initialCards,
-    renderer,
-  },
-  ".cards"
-);
+
+//Объект для заполнение профиля нового автора
+const dataAuthor = {
+  name: nameAuthor,
+  about: aboutAuthor,
+}
+
+//--------------------------------------------------//
 //Функция обработчик клика по карточке
 const handleCardClick = (cardImage, cardTitle) => {
   popupWithImage.open(cardImage, cardTitle);
 };
 //Функция создания карточек из класса Card
-function renderer (card)  {
-  const itemCard = new Card( card.cardName, card.cardLink, handleCardClick , ".template");
+const handleRenderCard = (card) => {
+  const itemCard = new Card(
+    card.cardName,
+    card.cardLink,
+    handleCardClick,
+    ".template"
+  );
   const cardElement = itemCard.createCard();
   renderArrayCards.addItemsOnContainer(cardElement);
-}
+};
+//Функция вывода карточек на экран
+const renderArrayCards = new Section(
+  {
+    data: initialCards,
+    handleRenderCard,
+  },
+  ".cards"
+);
+
 renderArrayCards.renderItems();
 
 //Инициализация класса добавления новой карточки в разметку
 const popupWithFormAddNewCard = new PopupWithForm({
   popupSelector: ".popup__add-card",
   closeButtonSelector: ".popup__close-button_add-card",
-   submitForm: (newCard) => {
-    const itemCard = new Card( newCard["cardName"], newCard["cardLink"],handleCardClick , ".template");
+  submitForm: (newCard) => {
+    const itemCard = new Card(
+      newCard["cardName"],
+      newCard["cardLink"],
+      handleCardClick,
+      ".template"
+    );
     const cardElement = itemCard.createCard();
-    container.prepend(cardElement);
-  }
+    renderArrayCards.addNewCardOnContainer(cardElement)
+  },
 });
 
-addButton.addEventListener("click", function () {
-  popupWithFormAddNewCard.open(); 
+addButton.addEventListener("click", () => {
+  popupWithFormAddNewCard.open();
 });
 popupWithFormAddNewCard.setEventListeners();
-//--------------------------------------------------// 
 
-//--------------------------------------------------// 
+//--------------------------------------------------//
 //Инициализация класса  для открытия и закрытия popup фотографии карточки
 const popupWithImage = new PopupWithImage({
   popupSelector: ".popup__open-card",
   closeButtonSelector: ".popup__close-button_open-card",
 });
 popupWithImage.setEventListeners();
-//--------------------------------------------------// 
 
-//--------------------------------------------------// 
-//Инициализация класса с информацией об авторе 
+//--------------------------------------------------//
+//Инициализация класса с информацией об авторе
 const userInfo = new UserInfo({
   profileTitle: ".profile__title",
   profileAboutAuthor: ".profile__about-author",
 });
-//Инициализация классов добавления информации об авторе на страницу 
+//Инициализация класса добавления информации об авторе на страницу
 const popupWithFormEditProfile = new PopupWithForm({
   popupSelector: ".popup",
   closeButtonSelector: ".popup__close-button",
   submitForm: () => {
-    userInfo.setUserInfo({ nameAuthor, aboutAuthor });
+    userInfo.setUserInfo(dataAuthor);
     popupWithFormEditProfile.close();
   },
 });
 
-profileEditButton.addEventListener("click", function () {
+profileEditButton.addEventListener("click", () => {
   popupWithFormEditProfile.open();
-  nameAuthor.value = profileTitle.textContent;
-  aboutAuthor.value = profileAboutAuthor.textContent;
-  userInfo.getUserInfo();
+  const userData = userInfo.getUserInfo();
+  nameAuthor.value = userData.nameAuthor;
+  aboutAuthor.value = userData.aboutAuthor;
+  
 });
 
 popupWithFormEditProfile.setEventListeners();
-//--------------------------------------------------// 
 
-//--------------------------------------------------// 
-//Создание нового объекта - экземляра класса для валидации формы EditProfile 
+//--------------------------------------------------//
+//Инициализация класса для валидации формы EditProfile
 const formValidatorEditProfile = new FormValidator(
   parametrs,
   parametrs.formSelector
 );
 formValidatorEditProfile.enableValidation();
-//--------------------------------------------------//
-//Создание нового объекта - экземляра класса для валидации формы AddCard
+
+//Инициализация класса для валидации формы AddCard
 const formValidatorAddCard = new FormValidator(
   parametrs,
   parametrs.formSelectorAddCard
