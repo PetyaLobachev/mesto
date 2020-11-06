@@ -1,7 +1,7 @@
 export class Section {
   constructor({ data, handleRenderCard }, cardSelector) {
     this._renderedItems = data;
-    this._renderer = handleRenderCard;
+    this._handleRenderCard = handleRenderCard;
     this._container = document.querySelector(cardSelector);
   }
   addItemsOnContainer(cardElement) {
@@ -12,7 +12,7 @@ export class Section {
   }
   renderItems() {
     this._renderedItems.forEach((card) => {
-      this._renderer(card);
+      this._handleRenderCard(card);
     });
   }
 }
