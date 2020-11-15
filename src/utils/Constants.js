@@ -11,7 +11,7 @@ export const esc = "Escape";
 
 //Объект с классами селекторов для валидации форм
 export const parametrs = {
-  formSelectorEditAvatar: ".popup__update-avatar",
+  formSelectorEditAvatar: ".popup__edit-avatar",
   formSelectorAddCard: ".popup__form_add-card",
   formSelector: ".popup__form",
   inputSelector: ".popup__input",
