@@ -100,17 +100,17 @@
             </div>
         </section>
 
-        <section class="popup popup__update-avatar">
-            <div class="popup__container popup__container-update-avatar">
+        <section class="popup popup__edit-avatar">
+            <div class="popup__container">
                 <button class="popup__close-button popup__close-button_edit-avatar" type="button" aria-label="Закрытие окна изменения фотографии автора"></button>
-                <h2 class="popup__title popup__title-update-avatar">Обновить аватар</h2>
+                <h2 class="popup__title popup__title_edit-avatar">Обновить аватар</h2>
                 <form class="popup__form" action="#" name="popupForm" novalidate>
                     <fieldset class="popup__form-input">
-                        <input class="popup__input  popup__form-update-avatar" id="avatarLink-input"
+                        <input class="popup__input  popup__form_edit-avatar" id="avatarLink-input"
                             type="url" placeholder="Ссылка на аватарку" name="avatar" required />
                         <span class="popup__form-input-error" id="avatarLink-input-error">Вы пропустили это поле.</span>
                     </fieldset>
-                    <button type="submit" class="popup__submit-button popup__submit-button-update-avatar">Сохранить</button>
+                    <button type="submit" class="popup__submit-button popup__submit-button_edit-avatar">Сохранить</button>
                 </form>
             </div>
         </section>
@@ -122,7 +122,7 @@
                 <h3 class="card__title"></h3>
                 <div class="card__like-container">
                     <button class="card__like-button" type="button" aria-label="Поставить лайк"></button>
-                    <span class="card__like-count" id="like-count">0</span>
+                    <span class="card__like-count">0</span>
                 </div>
             </li>
         </template>

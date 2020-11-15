@@ -57,9 +57,9 @@ popupWithImage.setEventListeners();
 
 //Изменение фотографии автора
 const popupWithFormEditAvatar = new PopupWithForm({
-  popupSelector: ".popup__update-avatar",
+  popupSelector: ".popup__edit-avatar",
   closeButtonSelector: ".popup__close-button_edit-avatar",
-  submitButton: ".popup__submit-button-update-avatar",
+  submitButton: ".popup__submit-button_edit-avatar",
   submitForm: (data) => {
     popupWithFormEditAvatar.renderLoading(true);
     api
