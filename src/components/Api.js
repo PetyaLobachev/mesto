@@ -1,14 +1,12 @@
-//import { data } from "autoprefixer";
-
 export class Api {
   constructor(options) {
     this._baseUrl = options.baseUrl;
     this._headers = options.headers;
   }
 
-  // initialData() {
-  //   return Promise.all([this.getUserInfo(), this.getInitialCards()]);
-  // }
+  initialData() {
+    return Promise.all([this.getUserInfo(), this.getInitialCards()]);
+  }
 
   getUserInfo() {
     return fetch(`${this._baseUrl}/users/me`, {
@@ -111,7 +109,7 @@ export class Api {
       });
   }
   putLikeCard(dataId) {
-    return fetch(`${this._baseUrl}/cards/likes/${dataId}`, {
+    return fetch(`${this._baseUrl}/cards/likes/${dataId._id}`, {
       method: "PUT",
       headers: this._headers,
     })
@@ -126,7 +124,7 @@ export class Api {
       });
   }
   deleteLikeCard(dataId) {
-    return fetch(`${this._baseUrl}/cards/likes/${dataId}}`, {
+    return fetch(`${this._baseUrl}/cards/likes/${dataId._id}`, {
       method: "DELETE",
       headers: this._headers,
     })
