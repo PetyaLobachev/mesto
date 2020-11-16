@@ -1,8 +1,8 @@
-import { Popup } from "./Popup.js";
+import { Popup } from './Popup.js';
 export class PopupConfirmDeleteCard extends Popup {
   constructor({ popupSelector, closeButtonSelector }) {
     super(popupSelector, closeButtonSelector);
-    this._submit = this._popupElement.querySelector(".popup__form-delete-card");
+    this._submit = this._popupElement.querySelector('.popup__form-delete-card');
   }
   setSubmitCallback(callback) {
     this._handleSubmitForm = callback;
@@ -10,11 +10,9 @@ export class PopupConfirmDeleteCard extends Popup {
 
   setEventListeners() {
     super.setEventListeners();
-    this._submit.addEventListener("submit", (event) => {
+    this._submit.addEventListener('submit', (event) => {
       event.preventDefault();
       this._handleSubmitForm();
-
-      super.close();
     });
   }
 }

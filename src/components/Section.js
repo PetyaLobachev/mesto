@@ -3,15 +3,12 @@ export class Section {
     this._handleRenderCard = handleRenderCard;
     this._container = document.querySelector(cardSelector);
   }
-  addItemsOnContainer(cardElement, position) {
-    if (position === "append") {
-      this._container.append(cardElement);
-    } else if (position === "prepend") {
+  addItemsOnContainer(cardElement) {
       this._container.prepend(cardElement);
     }
-  }
+  
   renderItems(cardsData) {
-    cardsData.forEach((card) => {
+    cardsData.reverse().forEach((card) => {
       this._handleRenderCard(card);
     });
   }

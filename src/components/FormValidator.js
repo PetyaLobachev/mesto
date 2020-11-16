@@ -9,6 +9,9 @@ export class FormValidator {
     this._inactiveButtonClass = parametrs.inactiveButtonClass;
     this._inputErrorClass = parametrs.inputErrorClass;
     this._errorClass = parametrs.errorClass;
+    this._inputSubmitButton = this._formElement.querySelector(
+      this._submitButtonSelector
+    );
   }
   //Приватный метод показывает ошибку в поле ввода(input)
   _showInputError(popupInput, errorMessege) {
@@ -26,7 +29,7 @@ export class FormValidator {
     );
     popupInput.classList.remove(this._inputErrorClass);
     errorElement.classList.remove(this._errorClass);
-    errorElement.textContent = "";
+    errorElement.textContent = '';
   }
   //Приватный метод проверяет массив полей ввода на предмет корректности введеных данных и
   // в зависимости от этого вызывает методы показать или скрыть ошибку
@@ -46,12 +49,19 @@ export class FormValidator {
   //Приватный метод стилизации кнопок submit
   _toggleButtonState(inputList, inputSubmitButton) {
     if (this._hasInvalidInput(inputList)) {
-      inputSubmitButton.classList.add(this._inactiveButtonClass);
-      inputSubmitButton.setAttribute("disabled", true);
+      this._disabledSubmitButton();
     } else {
       inputSubmitButton.classList.remove(this._inactiveButtonClass);
-      inputSubmitButton.removeAttribute("disabled");
+      inputSubmitButton.removeAttribute('disabled');
     }
+  }
+  //Приватный метод отключения кнопки
+  _disabledSubmitButton() {
+    const inputSubmitButton = this._formElement.querySelector(
+      this._submitButtonSelector
+    );
+    inputSubmitButton.classList.add(this._inactiveButtonClass);
+    inputSubmitButton.setAttribute('disabled', true);
   }
   //Приватный метод проходит по массиву input^ов => устанавливает слушителя событий полю ввода,
   // в функции колбека вызывает методы
@@ -61,23 +71,23 @@ export class FormValidator {
     const inputList = Array.from(
       this._formElement.querySelectorAll(this._inputSelector)
     );
-    const inputSubmitButton = this._formElement.querySelector(
-      this._submitButtonSelector
-    );
-    this._toggleButtonState(inputList, inputSubmitButton);
+    this._toggleButtonState(inputList, this._inputSubmitButton);
     inputList.forEach((popupInput) => {
-      popupInput.addEventListener("input", () => {
+      popupInput.addEventListener('input', () => {
         this._checkInputValidity(popupInput);
-        this._toggleButtonState(inputList, inputSubmitButton);
+        this._toggleButtonState(inputList, this._inputSubmitButton);
       });
     });
+    this._formElement.addEventListener('submit', () =>
+      this._disabledSubmitButton()
+    );
   }
   //Публичный метод включения валидации формы
   enableValidation() {
     function submitFormHandler(event) {
       event.preventDefault();
     }
-    this._formElement.addEventListener("submit", submitFormHandler);
+    this._formElement.addEventListener('submit', submitFormHandler);
     this._setEventListeners();
   }
 }

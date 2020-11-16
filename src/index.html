@@ -48,8 +48,7 @@
                             type="text" name="name" placeholder="Имя" required minlength="2" maxlength="40" />
                         <span class="popup__form-input-error" id="nameAuthor-input-error">Вы пропустили это поле.</span>
                         <input class="popup__input popup__form-author popup__form_author_about" id="aboutAuthor-input"
-                            type="text" name="about" placeholder="О себе" required minlength="2"
-                            maxlength="200" />
+                            type="text" name="about" placeholder="О себе" required minlength="2" maxlength="200" />
                         <span class="popup__form-input-error" id="aboutAuthor-input-error">Вы пропустили это
                             поле.</span>
                     </fieldset>
@@ -91,8 +90,9 @@
         </section>
 
         <section class="popup popup__delete-card">
-            <div class="popup__container popup__container-delete-card">
-                <button class="popup__close-button popup__close-button-delete-card" type="button" aria-label="Закрытие окна удаления карточки"></button>
+            <div class="popup__container">
+                <button class="popup__close-button popup__close-button_delete-card" type="button"
+                    aria-label="Закрытие окна удаления карточки"></button>
                 <h2 class="popup__title popup__title-delete-card">Вы уверены?</h2>
                 <form class="popup__form popup__form-delete-card" action="#" name="popupForm" novalidate>
                     <button type="submit" class="popup__submit-button popup__submit-button-delete-card">Да</button>
@@ -102,20 +102,22 @@
 
         <section class="popup popup__edit-avatar">
             <div class="popup__container">
-                <button class="popup__close-button popup__close-button_edit-avatar" type="button" aria-label="Закрытие окна изменения фотографии автора"></button>
+                <button class="popup__close-button popup__close-button_edit-avatar" type="button"
+                    aria-label="Закрытие окна изменения фотографии автора"></button>
                 <h2 class="popup__title popup__title_edit-avatar">Обновить аватар</h2>
                 <form class="popup__form" action="#" name="popupForm" novalidate>
                     <fieldset class="popup__form-input">
-                        <input class="popup__input  popup__form_edit-avatar" id="avatarLink-input"
-                            type="url" placeholder="Ссылка на аватарку" name="avatar" required />
+                        <input class="popup__input  popup__form_edit-avatar" id="avatarLink-input" type="url"
+                            placeholder="Ссылка на аватарку" name="avatar" required />
                         <span class="popup__form-input-error" id="avatarLink-input-error">Вы пропустили это поле.</span>
                     </fieldset>
-                    <button type="submit" class="popup__submit-button popup__submit-button_edit-avatar">Сохранить</button>
+                    <button type="submit"
+                        class="popup__submit-button popup__submit-button_edit-avatar">Сохранить</button>
                 </form>
             </div>
         </section>
 
-        <template class="template" >
+        <template class="template">
             <li class="card">
                 <img src="#" alt="#" class="card__image" />
                 <button class="card__delete" type="button" aria-label="Удалить карточку"></button>

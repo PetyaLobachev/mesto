@@ -39,7 +39,7 @@ export class Api {
   }
   editDataProfile(data) {
     return fetch(`${this._baseUrl}/users/me`, {
-      method: "PATCH",
+      method: 'PATCH',
       headers: this._headers,
       body: JSON.stringify({
         name: data.name,
@@ -58,7 +58,7 @@ export class Api {
   }
   addNewCard(data) {
     return fetch(`${this._baseUrl}/cards`, {
-      method: "POST",
+      method: 'POST',
       headers: this._headers,
       body: JSON.stringify({
         name: data.name,
@@ -77,7 +77,7 @@ export class Api {
   }
   editAvatar(data) {
     return fetch(`${this._baseUrl}/users/me/avatar`, {
-      method: "PATCH",
+      method: 'PATCH',
       headers: this._headers,
       body: JSON.stringify({
         avatar: data.avatar,
@@ -95,7 +95,7 @@ export class Api {
   }
   deleteCard(dataId) {
     return fetch(`${this._baseUrl}/cards/${dataId}`, {
-      method: "DELETE",
+      method: 'DELETE',
       headers: this._headers,
     })
       .then((res) => {
@@ -110,7 +110,7 @@ export class Api {
   }
   putLikeCard(dataId) {
     return fetch(`${this._baseUrl}/cards/likes/${dataId._id}`, {
-      method: "PUT",
+      method: 'PUT',
       headers: this._headers,
     })
       .then((res) => {
@@ -125,7 +125,7 @@ export class Api {
   }
   deleteLikeCard(dataId) {
     return fetch(`${this._baseUrl}/cards/likes/${dataId._id}`, {
-      method: "DELETE",
+      method: 'DELETE',
       headers: this._headers,
     })
       .then((res) => {

@@ -1,4 +1,4 @@
-import { esc } from "../utils/Constants.js";
+import { esc } from '../utils/Constants.js';
 
 export class Popup {
   constructor(popupSelector, closeButtonSelector) {
@@ -8,12 +8,12 @@ export class Popup {
     this._closePopupOnOverlay = this._closePopupOnOverlay.bind(this);
   }
   open() {
-    this._popupElement.classList.add("popup_opened");
-    document.addEventListener("keydown", this._closePopupOnEsc);
+    this._popupElement.classList.add('popup_opened');
+    document.addEventListener('keydown', this._closePopupOnEsc);
   }
   close() {
-    this._popupElement.classList.remove("popup_opened");
-    document.removeEventListener("keydown", this._closePopupOnEsc);
+    this._popupElement.classList.remove('popup_opened');
+    document.removeEventListener('keydown', this._closePopupOnEsc);
   }
 
   _closePopupOnEsc(event) {
@@ -30,9 +30,9 @@ export class Popup {
   }
 
   setEventListeners() {
-    this._closeButtonElement.addEventListener("click", () => {
+    this._closeButtonElement.addEventListener('click', () => {
       this.close();
     });
-    this._popupElement.addEventListener("click", this._closePopupOnOverlay);
+    this._popupElement.addEventListener('click', this._closePopupOnOverlay);
   }
 }
