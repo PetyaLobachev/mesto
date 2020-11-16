@@ -157,6 +157,7 @@ const handleRenderCard = (data) => {
         .then(() => {
           document.getElementById(dataId._id).remove();
           popupConfirmDeleteCard.close();
+          console.log('delete card');
         })
         .catch((err) => {
           console.log(err);
